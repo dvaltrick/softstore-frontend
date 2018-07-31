@@ -1,3 +1,4 @@
+import { TipoProdutoImposto } from './../models/TipoProdutoImposto';
 import { TipoProduto } from './../models/TipoProduto';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ConfigService } from './../config/config.service';
@@ -21,6 +22,15 @@ export class TiposProdutoService {
   public save(data:TipoProduto):Observable<TipoProduto>{
     return this.httpClient.post<TipoProduto>(this.service.BASE_URL+this.URL,data,httpOptions);
   }
+
+  public addImposto(data:TipoProdutoImposto):Observable<TipoProdutoImposto>{
+    return this.httpClient.post<TipoProdutoImposto>(this.service.BASE_URL+this.URL+'/addimposto',data,httpOptions);
+  }
+
+  public removeImposto(data:TipoProdutoImposto):Observable<TipoProdutoImposto>{
+    return this.httpClient.post<TipoProdutoImposto>(this.service.BASE_URL+this.URL+'/removeimposto',data,httpOptions);
+  }
+
 
   public update(data:TipoProduto):Observable<TipoProduto>{
     return this.httpClient.put<TipoProduto>(this.service.BASE_URL+this.URL,data,httpOptions);

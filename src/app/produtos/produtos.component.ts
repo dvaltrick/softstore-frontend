@@ -1,6 +1,8 @@
+import { TiposProdutoService } from './../tipos-produto/tipos-produto.service';
 import { ProdutosService } from './produtos.service';
 import { Component, OnInit } from '@angular/core';
 import { Produto } from '../models/Produto';
+import { TipoProduto } from '../models/TipoProduto';
 
 @Component({
   selector: 'app-produtos',
@@ -11,9 +13,11 @@ export class ProdutosComponent implements OnInit {
 
   editProduto = new Produto();
   listProdutos: Produto[] = [];
+  listTipos: TipoProduto[] = [];
   titulo:String = "";
+  editMode:Boolean = false;
 
-  constructor(private service:ProdutosService) {
+  constructor(private service:ProdutosService, private tiposService:TiposProdutoService) {
     this.load();
   }
 
@@ -25,6 +29,12 @@ export class ProdutosComponent implements OnInit {
         this.listProdutos = data;
       }
     );
+
+    this.tiposService.get().subscribe(
+      data => {
+        this.listTipos = data;
+      }
+    );
   }
 
   public save(){
@@ -34,6 +44,11 @@ export class ProdutosComponent implements OnInit {
         this.editProduto = new Produto();
       }
     );
+  }
+
+  public edit(produto:Produto){
+    this.editProduto = produto;
+    this.editMode = true;
   }
 
   public remove(produto:Produto){

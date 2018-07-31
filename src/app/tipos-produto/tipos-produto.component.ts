@@ -81,14 +81,25 @@ export class TiposProdutoComponent implements OnInit {
     var toAddTipoImp = new TipoProdutoImposto();
     toAddTipoImp.tipoProdutoId = this.editTipoProduto.tipoProdutoId;
     toAddTipoImp.impostoId = this.adicionaImposto.impostoId;
-    this.editTipoProduto.tiposProdutosImpostos.push(toAddTipoImp);
+    this.service.addImposto(toAddTipoImp).subscribe(
+      data => {
+        this.editTipoProduto.impostos.push(this.adicionaImposto);
+      }
+    );
   }
 
   public removeImposto(imposto:Imposto){
-    var index: number = this.editTipoProduto.impostos.indexOf(imposto);
-    if (index !== -1) {
-        this.editTipoProduto.impostos.splice(index, 1);
-    }
+    var toRemvoeTipoImp = new TipoProdutoImposto();
+    toRemvoeTipoImp.tipoProdutoId = this.editTipoProduto.tipoProdutoId;
+    toRemvoeTipoImp.impostoId = imposto.impostoId;
+    this.service.removeImposto(toRemvoeTipoImp).subscribe(
+      data => {
+        var index: number = this.editTipoProduto.impostos.indexOf(imposto);
+        if (index !== -1) {
+            this.editTipoProduto.impostos.splice(index, 1);
+        }
+      }
+    );
   }
 
   ngOnInit() {

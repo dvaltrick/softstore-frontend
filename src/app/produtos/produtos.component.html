@@ -11,13 +11,46 @@
               [(ngModel)]="editProduto.nome"
               placeholder="Informe o nome do imposto">
     </div>
-
+    <div class="col col-sm-5">
+      <label for="edCodigo">Código de Barras</label>
+      <input type="text"
+              class="form-control"
+              id="edCodigo"
+              name="edCodigo"
+              [(ngModel)]="editProduto.codigoBarras"
+              placeholder="Informe o código de barras">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col col-sm-5">
+      <label for="selTipo">Tipo de Produto</label>
+      <select class="form-control"
+              id="selTipo"
+              [(ngModel)]="editProduto.tipo"
+              name="selTipo">
+        <option *ngFor="let tipo of listTipos" [ngValue]="tipo">{{tipo.nome}}</option>
+      </select>
+    </div>
+    <div class="col col-sm-4">
+      <label for="edValor">Valor Unitário</label>
+      <input type="number"
+              class="form-control"
+              id="edValor"
+              name="edValor"
+              [(ngModel)]="editProduto.valorUnitario">
+    </div>
     <div class="col col-sm-1 btadd">
-      <button class="btn btn-primary mb-2"
+      <button class="btn btn-primary"
               name="btAdd"
               (click)="save();"
               id="btAdd">
         <i class="fas fa-plus-circle"></i>
+      </button>
+      <button class="btn btn-success"
+              name="btUpdate"
+              (click)="update();"
+              id="btUpdate">
+        <i class="fas fa-check"></i>
       </button>
     </div>
   </div>
@@ -25,18 +58,28 @@
 <div class="list-content" *ngIf="listProdutos.length > 0">
   <div class="row line">
     <div class="col col-sm-1"></div>
+    <div class="col col-sm-1"></div>
     <div class="col col-sm-2"><h6>Produto</h6></div>
+    <div class="col col-sm-2"><h6>Valor</h6></div>
   </div>
   <div class="row line" *ngFor="let prod of listProdutos;">
     <div class="col col-sm-1">
-        <button class="btn btn-link"
-                name="btRemove"
-                (click)="remove(prod);"
-                id="btRemove">
-          <i class="far fa-trash-alt"></i>
-        </button>
-
+      <button class="btn btn-link"
+              name="btEdit"
+              (click)="edit(prod);"
+              id="btEdit">
+        <i class="fas fa-pencil-alt"></i>
+      </button>
+    </div>
+    <div class="col col-sm-1">
+      <button class="btn btn-link"
+              name="btRemove"
+              (click)="remove(prod);"
+              id="btRemove">
+        <i class="far fa-trash-alt"></i>
+      </button>
     </div>
     <div class="col col-sm-2">{{prod.nome}}</div>
+    <div class="col col-sm-2">{{prod.valorUnitario}}</div>
   </div>
 </div>
