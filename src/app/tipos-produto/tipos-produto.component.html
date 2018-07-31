@@ -1,0 +1,112 @@
+<h3>Tipos de Produto</h3>
+<hr>
+<div *ngIf="!editMode">
+  <form>
+    <div class="row">
+      <div class="col col-sm-5">
+        <label for="edNome">Nome</label>
+        <input type="text"
+                class="form-control"
+                id="edNome"
+                name="edNome"
+                [(ngModel)]="editTipoProduto.nome"
+                placeholder="Informe o tipo do produto">
+      </div>
+      <div class="col col-sm-1 btadd">
+        <button class="btn btn-primary mb-2"
+                name="btAdd"
+                (click)="save();"
+                id="btAdd">
+          <i class="fas fa-plus-circle"></i>
+        </button>
+      </div>
+    </div>
+  </form>
+
+  <div class="list-content" *ngIf="listTipos.length > 0">
+    <div class="row line">
+      <div class="col col-sm-1"></div>
+      <div class="col col-sm-1"></div>
+      <div class="col col-sm-2"><h6>Tipo de Produto</h6></div>
+    </div>
+    <div class="row line" *ngFor="let tipo of listTipos;">
+      <div class="col col-sm-1">
+          <button class="btn btn-link"
+                  name="btEdit"
+                  (click)="edit(tipo);"
+                  id="btEdit">
+            <i class="fas fa-pencil-alt"></i>
+          </button>
+      </div>
+      <div class="col col-sm-1">
+          <button class="btn btn-link"
+                  name="btRemove"
+                  (click)="remove(tipo);"
+                  id="btRemove">
+            <i class="far fa-trash-alt"></i>
+          </button>
+      </div>
+      <div class="col col-sm-2">{{tipo.nome}}</div>
+    </div>
+  </div>
+
+</div>
+
+<div *ngIf="editMode">
+  <form>
+    <div class="form-group">
+      <label for="edNome">Nome</label>
+      <input type="text"
+              class="form-control"
+              id="edNome"
+              name="edNome"
+              [(ngModel)]="editTipoProduto.nome"
+              placeholder="Informe o tipo do produto">
+    </div>
+    <div class="form-group">
+      <label for="selImposto">Impostos</label>
+      <div class="row">
+        <div class="col col-sm-5">
+          <select class="form-control"
+                  id="selImposto"
+                  [(ngModel)]="adicionaImposto"
+                  name="selImposto">
+            <option *ngFor="let imp of listImpostos" [ngValue]="imp">{{imp.nome}}</option>
+          </select>
+        </div>
+        <div class="col col-sm-1">
+          <button class="btn btn-primary mb-2"
+                  name="btAddImposto"
+                  (click)="addImposto();"
+                  id="btAddImposto">
+            <i class="fas fa-plus-circle"></i>
+          </button>
+        </div>
+      </div>
+      <div>
+        <div class="row line" *ngFor="let imp of editTipoProduto.impostos;">
+          <div class="col col-sm-1">
+              <button class="btn btn-link"
+                      name="btRemove"
+                      (click)="removeImposto(imp);"
+                      id="btRemove">
+                <i class="far fa-trash-alt"></i>
+              </button>
+          </div>
+          <div class="col col-sm-2">{{imp.nome}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <button class="btn btn-success"
+              name="btUpdate"
+              (click)="update();"
+              id="btUpdate">Salvar</button>
+      <button class="btn btn-secondary"
+              name="btUpdate"
+              (click)="cancel();"
+              id="btUpdate">Cancelar</button>
+    </div>
+  </form>
+</div>
+

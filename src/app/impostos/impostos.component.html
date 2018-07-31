@@ -1,0 +1,52 @@
+<h3>Impostos</h3>
+<hr>
+<form>
+  <div class="row">
+    <div class="col col-sm-5">
+      <label for="edNome">Nome</label>
+      <input type="text"
+              class="form-control"
+              id="edNome"
+              name="edNome"
+              [(ngModel)]="editImposto.nome"
+              placeholder="Informe o nome do imposto">
+    </div>
+    <div class="col col-sm-2">
+      <label for="edPercentual">%</label>
+      <input type="number"
+              id="edPercentual"
+              name="edPercentual"
+              min="0"
+              [(ngModel)]="editImposto.percentual"
+              class="form-control" >
+    </div>
+    <div class="col col-sm-1 btadd">
+      <button class="btn btn-primary mb-2"
+              name="btAdd"
+              (click)="save();"
+              id="btAdd">
+        <i class="fas fa-plus-circle"></i>
+      </button>
+    </div>
+  </div>
+</form>
+<div class="list-content" *ngIf="listImpostos.length > 0">
+  <div class="row line">
+    <div class="col col-sm-1"></div>
+    <div class="col col-sm-2"><h6>Imposto</h6></div>
+    <div class="col col-sm-1"><h6>%</h6></div>
+  </div>
+  <div class="row line" *ngFor="let imp of listImpostos;">
+    <div class="col col-sm-1">
+        <button class="btn btn-link"
+                name="btRemove"
+                (click)="remove(imp);"
+                id="btRemove">
+          <i class="far fa-trash-alt"></i>
+        </button>
+
+    </div>
+    <div class="col col-sm-2">{{imp.nome}}</div>
+    <div class="col col-sm-1">{{imp.percentual}}</div>
+  </div>
+</div>
