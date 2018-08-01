@@ -42,12 +42,14 @@
     <div class="col col-sm-1 btadd">
       <button class="btn btn-primary"
               name="btAdd"
+              *ngIf="!editMode"
               (click)="save();"
               id="btAdd">
         <i class="fas fa-plus-circle"></i>
       </button>
       <button class="btn btn-success"
               name="btUpdate"
+              *ngIf="editMode"
               (click)="update();"
               id="btUpdate">
         <i class="fas fa-check"></i>

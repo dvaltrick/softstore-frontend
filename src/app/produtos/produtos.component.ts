@@ -3,6 +3,7 @@ import { ProdutosService } from './produtos.service';
 import { Component, OnInit } from '@angular/core';
 import { Produto } from '../models/Produto';
 import { TipoProduto } from '../models/TipoProduto';
+import { ItemVenda } from '../models/ItemVenda';
 
 @Component({
   selector: 'app-produtos',
@@ -42,6 +43,16 @@ export class ProdutosComponent implements OnInit {
       data => {
         this.load();
         this.editProduto = new Produto();
+      }
+    );
+  }
+
+  public update(){
+    this.service.update(this.editProduto).subscribe(
+      data => {
+        this.load();
+        this.editProduto = new Produto();
+        this.editMode = false;
       }
     );
   }

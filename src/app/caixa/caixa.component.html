@@ -1,3 +1,77 @@
-<p>
-  caixa works!
-</p>
+<h3>Caixa</h3>
+<hr>
+<div class="caixa-content">
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="row">
+        <div class="col col-sm-6">
+          <label for="selProduto">Selecione o produto</label>
+          <select class="form-control"
+                  id="selProduto"
+                  [(ngModel)]="itemVenda.produto"
+                  name="selProduto">
+            <option *ngFor="let prod of produtos" [ngValue]="prod">{{prod.nome}}</option>
+          </select>
+
+        </div>
+        <div class="col col-sm-2">
+          <label for="edQtd">Qtd.</label>
+          <input type="number"
+                  class="form-control"
+                  id="edQtd"
+                  name="edQtd"
+                  [(ngModel)]="itemVenda.quantidade">
+        </div>
+        <div class="col col-sm-1 btadd">
+          <button class="btn btn-primary"
+                  name="btAdd"
+                  (click)="addItem();"
+                  id="btAdd">
+            <i class="fas fa-plus-circle"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <h4>Total: R${{venda.total | number : '1.2-2'}}</h4>
+      <h5>Impostos: R${{venda.totalImpostos | number : '1.2-2'}}</h5>
+      <button class="btn btn-success"
+              name="btFinalizar"
+              (click)="save();"
+              id="btFinalizar">
+        <i class="fas fa-check"></i>  Finalizar Venda
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col col-sm-10">
+      <div class="list-content" *ngIf="venda.itens.length > 0">
+        <div class="row line">
+          <div class="col col-sm-1"></div>
+          <div class="col col-sm-3"><h6>Produto</h6></div>
+          <div class="col col-sm-2"><h6>Val. Uni.</h6></div>
+          <div class="col col-sm-2"><h6>Qtd.</h6></div>
+          <div class="col col-sm-2"><h6>Impostos</h6></div>
+          <div class="col col-sm-2"><h6>Total</h6></div>
+        </div>
+        <div class="row line" *ngFor="let item of venda.itens;">
+          <div class="col col-sm-1">
+            <button class="btn btn-link"
+                    name="btRemove"
+                    (click)="remove(prod);"
+                    id="btRemove">
+              <i class="far fa-trash-alt"></i>
+            </button>
+          </div>
+          <div class="col col-sm-3">{{item.produto.nome}}</div>
+          <div class="col col-sm-2">{{item.produto.valorUnitario | number : '1.2-2'}}</div>
+          <div class="col col-sm-2">{{item.quantidade}}</div>
+          <div class="col col-sm-2">{{item.totalImpostos | number : '1.2-2'}}</div>
+          <div class="col col-sm-2">{{item.totalItem | number : '1.2-2'}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
