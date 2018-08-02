@@ -1,3 +1,4 @@
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ImpostosService } from './../impostos/impostos.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -8,9 +9,11 @@ import { FormsModule } from '@angular/forms';
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    MatSnackBarModule
   ],
   declarations: [TiposProdutoComponent],
-  providers: [TiposProdutoService, ImpostosService]
+  providers: [TiposProdutoService, ImpostosService],
+  exports:[MatSnackBarModule]
 })
 export class TiposProdutoModule { }

@@ -1,3 +1,4 @@
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { TipoProdutoImposto } from './../models/TipoProdutoImposto';
 import { TiposProdutoService } from './tipos-produto.service';
 import { TipoProduto } from './../models/TipoProduto';
@@ -18,7 +19,8 @@ export class TiposProdutoComponent implements OnInit {
   adicionaImposto:Imposto = new Imposto();
 
   constructor(private service:TiposProdutoService,
-              private impostosService: ImpostosService) {
+              private impostosService: ImpostosService,
+              public snackBar:MatSnackBar) {
     this.load();
   }
 
@@ -43,6 +45,14 @@ export class TiposProdutoComponent implements OnInit {
       data => {
         this.load();
         this.edit(data);
+        this.snackBar.open("Tipo de produto salvo com sucesso", "Sucesso!!!", {
+          duration: 5000
+        });
+      },
+      erro =>{
+        this.snackBar.open("Não foi possível salvar o tipo de produto", "Ops!!!", {
+          duration: 5000
+        });
       }
     );
   }
@@ -54,6 +64,14 @@ export class TiposProdutoComponent implements OnInit {
         this.load();
         this.editMode = false;
         this.editTipoProduto = new TipoProduto();
+        this.snackBar.open("Tipo de produto salvo com sucesso", "Sucesso!!!", {
+          duration: 5000
+        });
+      },
+      erro =>{
+        this.snackBar.open("Não foi possível atualizar o tipo de produto", "Ops!!!", {
+          duration: 5000
+        });
       }
     );
   }
@@ -73,6 +91,14 @@ export class TiposProdutoComponent implements OnInit {
       data => {
         console.log(data);
         this.load();
+        this.snackBar.open("Tipo de produto removido com sucesso", "Sucesso!!!", {
+          duration: 5000
+        });
+      },
+      erro =>{
+        this.snackBar.open("Não foi possível remover o tipo de produto, verifique se o mesmo está vinculado a um produto", "Ops!!!", {
+          duration: 5000
+        });
       }
     );
   }
@@ -84,6 +110,14 @@ export class TiposProdutoComponent implements OnInit {
     this.service.addImposto(toAddTipoImp).subscribe(
       data => {
         this.editTipoProduto.impostos.push(this.adicionaImposto);
+        this.snackBar.open("Imposto vinculado com sucesso", "Sucesso!!!", {
+          duration: 5000
+        });
+      },
+      erro =>{
+        this.snackBar.open("Não foi possível vincular o imposto", "Ops!!!", {
+          duration: 5000
+        });
       }
     );
   }
@@ -98,6 +132,14 @@ export class TiposProdutoComponent implements OnInit {
         if (index !== -1) {
             this.editTipoProduto.impostos.splice(index, 1);
         }
+        this.snackBar.open("Imposto desvinculado com sucesso", "Sucesso!!!", {
+          duration: 5000
+        });
+      },
+      erro =>{
+        this.snackBar.open("Não foi possível desvincular o imposto", "Ops!!!", {
+          duration: 5000
+        });
       }
     );
   }

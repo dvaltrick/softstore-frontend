@@ -7,6 +7,9 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProdutosModule } from './produtos/produtos.module';
+import {ToastModule} from 'ng2-toastr/ng2-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,10 @@ import { ProdutosModule } from './produtos/produtos.module';
     CaixaModule,
     ImpostosModule,
     TiposProdutoModule,
-    ProdutosModule
+    ProdutosModule,
+    ToastModule.forRoot(),
+    BrowserAnimationsModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

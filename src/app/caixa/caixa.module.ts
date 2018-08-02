@@ -4,13 +4,16 @@ import { CommonModule } from '@angular/common';
 import { CaixaComponent } from './caixa.component';
 import { CaixaService } from './caixa.service';
 import { FormsModule } from '@angular/forms';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    MatSnackBarModule
   ],
   declarations: [CaixaComponent],
-  providers: [CaixaService, ProdutosService]
+  providers: [CaixaService, ProdutosService],
+  exports:[MatSnackBarModule]
 })
 export class CaixaModule { }

@@ -1,6 +1,8 @@
 import { Imposto } from './../models/Imposto';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { ImpostosService } from './impostos.service';
+import { ToastsManager } from 'ng2-toastr';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-impostos',
@@ -13,7 +15,9 @@ export class ImpostosComponent implements OnInit {
   listImpostos: Imposto[] = [];
   titulo:String = "";
 
-  constructor(private service:ImpostosService) {
+  constructor(private service:ImpostosService,
+              public snackBar: MatSnackBar) {
+
     this.load();
   }
 
@@ -31,6 +35,14 @@ export class ImpostosComponent implements OnInit {
       data => {
         this.load();
         this.editImposto = new Imposto();
+        this.snackBar.open("Imposto salvo com sucesso", "Sucesso!!!", {
+          duration: 5000
+        });
+      },
+      erro =>{
+        this.snackBar.open("Não foi possível salvar o imposto", "Ops!!!", {
+          duration: 5000
+        });
       }
     );
   }
@@ -40,6 +52,14 @@ export class ImpostosComponent implements OnInit {
       data => {
         console.log(data);
         this.load();
+        this.snackBar.open("Imposto removido com sucesso", "Sucesso!!!", {
+          duration: 5000
+        });
+      },
+      erro =>{
+        this.snackBar.open("Não foi possível remover o imposto, verifique se o mesmo está vinculado a um tipo de produto", "Ops!!!", {
+          duration: 5000
+        });
       }
     );
   }

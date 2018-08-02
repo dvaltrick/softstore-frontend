@@ -1,3 +1,4 @@
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { CaixaService } from './caixa.service';
 import { ProdutosService } from './../produtos/produtos.service';
 import { Venda } from './../models/Venda';
@@ -16,7 +17,8 @@ export class CaixaComponent implements OnInit {
   produtos: Produto[] = [];
 
   constructor(private service:CaixaService,
-              private produtosService:ProdutosService) {
+              private produtosService:ProdutosService,
+              private snackBar:MatSnackBar) {
     this.load();
   }
 
@@ -35,6 +37,14 @@ export class CaixaComponent implements OnInit {
     this.service.save(this.venda).subscribe(
       data => {
         this.venda = new Venda();
+        this.snackBar.open("Venda finalizada com sucesso", "Sucesso!!!", {
+          duration: 5000
+        });
+      },
+      erro =>{
+        this.snackBar.open("Não foi possível finalziar a venda", "Ops!!!", {
+          duration: 5000
+        });
       }
     );
   }
