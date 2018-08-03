@@ -24,12 +24,10 @@
   <div class="row">
     <div class="col col-sm-5">
       <label for="selTipo">Tipo de Produto</label>
-      <select class="form-control"
-              id="selTipo"
-              [(ngModel)]="editProduto.tipo"
-              name="selTipo">
-        <option *ngFor="let tipo of listTipos" [ngValue]="tipo">{{tipo.nome}}</option>
-      </select>
+      <ng-select [(ngModel)]="editProduto.tipo" name="selTipo" id="selTipo">
+          <ng-option *ngFor="let tipo of listTipos" [value]="tipo">{{tipo.nome}}</ng-option>
+      </ng-select>
+
     </div>
     <div class="col col-sm-4">
       <label for="edValor">Valor Unitário</label>

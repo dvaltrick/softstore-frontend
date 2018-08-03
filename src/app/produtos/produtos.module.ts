@@ -6,12 +6,14 @@ import { ProdutosService } from './produtos.service';
 import { FormsModule } from '@angular/forms';
 import { TiposProdutoService } from '../tipos-produto/tipos-produto.service';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    NgSelectModule
   ],
   declarations: [ProdutosComponent],
   providers: [ProdutosService, ConfigService, TiposProdutoService],

@@ -6,13 +6,9 @@
       <div class="row">
         <div class="col col-sm-6">
           <label for="selProduto">Selecione o produto</label>
-          <select class="form-control"
-                  id="selProduto"
-                  [(ngModel)]="itemVenda.produto"
-                  name="selProduto">
-            <option *ngFor="let prod of produtos" [ngValue]="prod">{{prod.nome}}</option>
-          </select>
-
+          <ng-select [(ngModel)]="itemVenda.produto">
+              <ng-option *ngFor="let prod of produtos" [value]="prod">{{prod.nome}}</ng-option>
+          </ng-select>
         </div>
         <div class="col col-sm-2">
           <label for="edQtd">Qtd.</label>

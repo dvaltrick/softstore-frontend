@@ -1,3 +1,4 @@
+import { NgSelectModule } from '@ng-select/ng-select';
 import { ProdutosService } from './../produtos/produtos.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -10,7 +11,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
   imports: [
     CommonModule,
     FormsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    NgSelectModule
   ],
   declarations: [CaixaComponent],
   providers: [CaixaService, ProdutosService],

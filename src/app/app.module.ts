@@ -10,6 +10,7 @@ import { ProdutosModule } from './produtos/produtos.module';
 import {ToastModule} from 'ng2-toastr/ng2-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     ProdutosModule,
     ToastModule.forRoot(),
     BrowserAnimationsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    NgSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
