@@ -24,8 +24,8 @@
   <div class="row">
     <div class="col col-sm-5">
       <label for="selTipo">Tipo de Produto</label>
-      <ng-select [(ngModel)]="editProduto.tipo" name="selTipo" id="selTipo">
-          <ng-option *ngFor="let tipo of listTipos" [value]="tipo">{{tipo.nome}}</ng-option>
+      <ng-select [(ngModel)]="editProduto.tipo.tipoProdutoId" name="selTipo" id="selTipo">
+          <ng-option *ngFor="let tipo of listTipos" [value]="tipo.tipoProdutoId">{{tipo.nome}}</ng-option>
       </ng-select>
 
     </div>
@@ -51,6 +51,13 @@
               (click)="update();"
               id="btUpdate">
         <i class="fas fa-check"></i>
+      </button>
+      <button class="btn btn-secondary"
+              name="btCancel"
+              *ngIf="editMode"
+              (click)="cancel();"
+              id="btCancel">
+        <i class="fas fa-times"></i>
       </button>
     </div>
   </div>

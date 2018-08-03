@@ -1,0 +1,23 @@
+<h3>Relatório de Vendas</h3>
+<hr>
+<div class="list-content" *ngIf="vendas.length > 0">
+  <div class="row line">
+    <div class="col col-sm-1"><h6>ID</h6></div>
+    <div class="col col-sm-2"><h6>Total Impostos</h6></div>
+    <div class="col col-sm-2"><h6>Total</h6></div>
+    <div class="col col-sm-7"><h6>Itens</h6></div>
+  </div>
+  <div class="row line" *ngFor="let venda of vendas; let i = index;">
+    <div class="col col-sm-1">{{venda.vendaId}}</div>
+    <div class="col col-sm-2">R$ {{venda.totalImpostos | number : '1.2-2'}}</div>
+    <div class="col col-sm-2">R$ {{venda.total | number : '1.2-2'}}</div>
+    <div class="col col-sm-7">
+      <div class="row" *ngFor="let item of venda?.itens;">
+        <div class="col col-sm-5">{{item.produto.nome}}</div>
+        <div class="col col-sm-1">{{item.quantidade}}</div>
+        <div class="col col-sm-2">R$ {{item.totalImpostos | number : '1.2-2'}}</div>
+        <div class="col col-sm-2">R$ {{item.totalItem | number : '1.2-2'}}</div>
+      </div>
+    </div>
+  </div>
+</div>

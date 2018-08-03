@@ -49,6 +49,7 @@ export class CaixaComponent implements OnInit {
     );
   }
 
+
   public addItem(){
     this.itemVenda.totalItem = (this.itemVenda.produto.valorUnitario.valueOf() * this.itemVenda.quantidade.valueOf());
 
@@ -80,7 +81,11 @@ export class CaixaComponent implements OnInit {
     this.venda.totalImpostos = totalImpoVenda;
   }
 
-  public removeItem(item:Produto){
+  public removeItem(item:ItemVenda){
+    var index: number = this.venda.itens.indexOf(item);
+    if (index !== -1) {
+        this.venda.itens.splice(index, 1);
+    }
     this.totalizaVenda();
   }
 }

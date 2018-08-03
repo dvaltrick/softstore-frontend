@@ -11,6 +11,7 @@ import {ToastModule} from 'ng2-toastr/ng2-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { RelatorioModule } from './relatorio/relatorio.module';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
     ToastModule.forRoot(),
     BrowserAnimationsModule,
     MatSnackBarModule,
-    NgSelectModule
+    NgSelectModule,
+    RelatorioModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -81,6 +81,11 @@ export class ProdutosComponent implements OnInit {
     this.editMode = true;
   }
 
+  public cancel(){
+    this.editProduto = new Produto();
+    this.editMode = false;
+  }
+
   public remove(produto:Produto){
     this.service.delete(produto.produtoId).subscribe(
       data => {

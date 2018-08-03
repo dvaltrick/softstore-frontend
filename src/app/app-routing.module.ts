@@ -1,3 +1,4 @@
+import { RelatorioComponent } from './relatorio/relatorio.component';
 import { ProdutosComponent } from './produtos/produtos.component';
 import { CaixaComponent } from './caixa/caixa.component';
 import { ImpostosComponent } from './impostos/impostos.component';
@@ -10,6 +11,7 @@ const routes: Routes = [
   { path: 'impostos', component:ImpostosComponent},
   { path: 'tiposproduto', component:TiposProdutoComponent},
   { path: 'produtos', component:ProdutosComponent},
+  { path: 'relatorio', component:RelatorioComponent},
   { path: '', redirectTo: '/caixa', pathMatch: 'full' }
 ]
 

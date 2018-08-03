@@ -1,3 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 @import "~@ng-select/ng-select/themes/default.theme.css";
+
+.list-content{
+  padding: 10px;
+  margin-top:50px;
+}
+
+.line{
+  border-bottom: 1px solid lightgray;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.btadd{
+  margin-top: 31px;
+}
